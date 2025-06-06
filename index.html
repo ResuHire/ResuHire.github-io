@@ -1,1070 +1,439 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="__variable_5cfdac __variable_9a8899">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ResuHire - The Future of Recruitment</title>
-  <style>
-    /* Base Styles */
-    :root {
-      --primary-gradient: linear-gradient(to right, #4ade80, #2dd4bf);
-      --secondary-gradient: linear-gradient(to right, #818cf8, #c084fc);
-      --accent-gradient: linear-gradient(to right, #4ade80, #3b82f6);
-      --text-gradient: linear-gradient(to right, #fff, #a5b4fc);
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
-    }
-    
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    
-    button {
-      cursor: pointer;
-      border: none;
-      outline: none;
-      font-family: inherit;
-    }
-    
-    .container {
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      background-color: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(4px);
-      border-bottom: 1px solid #1f2937;
-    }
-    
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .logo-icon {
-      width: 2rem;
-      height: 2rem;
-      background: linear-gradient(to right, #4ade80, #2dd4bf);
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-    }
-    
-    .nav-links {
-      display: none;
-    }
-    
-    @media (min-width: 768px) {
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
-    }
-    
-    .nav-links a {
-      color: #9ca3af;
-      transition: color 0.2s;
-    }
-    
-    .nav-links a:hover {
-      color: #fff;
-    }
-    
-    .auth-buttons {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .btn-login {
-      background-color: transparent;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: background-color 0.2s;
-    }
-    
-    .btn-login:hover {
-      background-color: #1f2937;
-    }
-    
-    .btn-signup {
-      background: linear-gradient(to right, #4ade80, #2dd4bf);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: opacity 0.2s;
-    }
-    
-    .btn-signup:hover {
-      opacity: 0.9;
-    }
-    
-    /* Hero Section */
-    .hero {
-      padding-top: 6rem;
-      padding-bottom: 4rem;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-    
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom right, rgba(79, 70, 229, 0.1), rgba(0, 0, 0, 0));
-      z-index: -1;
-    }
-    
-    .trust-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: rgba(31, 41, 55, 0.5);
-      backdrop-filter: blur(4px);
-      border-radius: 9999px;
-      padding: 0.5rem 1rem;
-      margin-bottom: 2rem;
-    }
-    
-    .badge-dots {
-      display: flex;
-      margin-right: 0.5rem;
-    }
-    
-    .badge-dot {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 9999px;
-      margin-left: -0.5rem;
-      border: 2px solid #000;
-    }
-    
-    .badge-dot:first-child {
-      margin-left: 0;
-    }
-    
-    .badge-dot-1 {
-      background: linear-gradient(to right, #4ade80, #2dd4bf);
-    }
-    
-    .badge-dot-2 {
-      background: linear-gradient(to right, #2dd4bf, #22d3ee);
-    }
-    
-    .badge-dot-3 {
-      background: linear-gradient(to right, #22d3ee, #3b82f6);
-    }
-    
-    .badge-dot-4 {
-      background: linear-gradient(to right, #3b82f6, #6366f1);
-    }
-    
-    .badge-text {
-      color: #d1d5db;
-      font-size: 0.875rem;
-    }
-    
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    
-    .hero-title-gradient {
-      background: linear-gradient(to right, #4ade80, #22d3ee, #2dd4bf);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: #9ca3af;
-      max-width: 36rem;
-      margin: 0 auto 2rem;
-    }
-    
-    .hero-cta {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 24rem;
-      margin: 0 auto;
-    }
-    
-    @media (min-width: 640px) {
-      .hero-cta {
-        flex-direction: row;
-      }
-    }
-    
-    .email-input {
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      background-color: rgba(31, 41, 55, 0.5);
-      border: 1px solid #374151;
-      color: white;
-      width: 100%;
-      flex: 1;
-    }
-    
-    .btn-get-started {
-      background: linear-gradient(to right, #4ade80, #2dd4bf);
-      color: white;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      transition: transform 0.2s;
-    }
-    
-    .btn-get-started:hover {
-      transform: translateY(-2px);
-    }
-    
-    .hero-note {
-      margin-top: 1rem;
-      font-size: 0.875rem;
-      color: #6b7280;
-    }
-    
-    /* Stats Section */
-    .stats {
-      padding: 4rem 0;
-      text-align: center;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    @media (min-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    
-    .stat-item {
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-    
-    .stat-label {
-      font-size: 1rem;
-      color: #9ca3af;
-      margin-top: 0.5rem;
-    }
-    
-    /* Trust Indicators */
-    .trust {
-      padding: 3rem 0;
-      text-align: center;
-      border-top: 1px solid #1f2937;
-    }
-    
-    .trust-title {
-      font-size: 1.25rem;
-      color: #9ca3af;
-      margin-bottom: 2rem;
-    }
-    
-    .partners {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 3rem;
-      margin-bottom: 3rem;
-      opacity: 0.6;
-    }
-    
-    .partner {
-      color: #6b7280;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    
-    .security-features {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .security-item {
-      background-color: rgba(17, 24, 39, 0.5);
-      border-radius: 1rem;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .security-icon {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .security-icon.green {
-      background-color: #10b981;
-    }
-    
-    .security-icon.blue {
-      background-color: #3b82f6;
-    }
-    
-    .security-icon.purple {
-      background-color: #8b5cf6;
-    }
-    
-    .security-text {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .security-label {
-      font-weight: 600;
-      color: white;
-    }
-    
-    .security-desc {
-      font-size: 0.875rem;
-      color: #9ca3af;
-    }
-    
-    /* Features Section */
-    .features {
-      padding: 6rem 0;
-      background: linear-gradient(to bottom, rgba(17, 24, 39, 0.5), rgba(0, 0, 0, 1));
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    .section-title-gradient {
-      background: linear-gradient(to right, #4ade80, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: #9ca3af;
-      text-align: center;
-      max-width: 36rem;
-      margin: 0 auto 3rem;
-    }
-    
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 2rem;
-    }
-    
-    @media (min-width: 768px) {
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .features-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    
-    .feature-card {
-      background-color: rgba(17, 24, 39, 0.5);
-      border: 1px solid #1f2937;
-      border-radius: 1rem;
-      padding: 2rem;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      border-color: #374151;
-    }
-    
-    .feature-icon {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-    }
-    
-    .feature-icon-1 {
-      background: linear-gradient(to right, #8b5cf6, #6366f1);
-    }
-    
-    .feature-icon-2 {
-      background: linear-gradient(to right, #ec4899, #8b5cf6);
-    }
-    
-    .feature-icon-3 {
-      background: linear-gradient(to right, #10b981, #3b82f6);
-    }
-    
-    .feature-icon-4 {
-      background: linear-gradient(to right, #f59e0b, #ef4444);
-    }
-    
-    .feature-icon-5 {
-      background: linear-gradient(to right, #ec4899, #f43f5e);
-    }
-    
-    .feature-icon-6 {
-      background: linear-gradient(to right, #8b5cf6, #6366f1);
-    }
-    
-    .feature-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-    
-    .feature-desc {
-      color: #9ca3af;
-      line-height: 1.5;
-    }
-    
-    /* CTA Section */
-    .cta {
-      padding: 4rem 0;
-      border-top: 1px solid #1f2937;
-    }
-    
-    .cta-container {
-      background-color: rgba(17, 24, 39, 0.5);
-      border: 1px solid #1f2937;
-      border-radius: 1rem;
-      padding: 3rem 2rem;
-      text-align: center;
-      max-width: 36rem;
-      margin: 0 auto;
-    }
-    
-    .cta-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    .cta-desc {
-      color: #9ca3af;
-      margin-bottom: 2rem;
-    }
-    
-    .btn-cta {
-      background: linear-gradient(to right, #4ade80, #2dd4bf);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-    
-    .btn-cta:hover {
-      transform: translateY(-2px) scale(1.05);
-    }
-    
-    /* Proven Track Record Section */
-    .track-record {
-      padding: 6rem 0;
-      text-align: center;
-    }
-    
-    .track-record-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-    
-    .track-record-subtitle {
-      font-size: 1.125rem;
-      color: #9ca3af;
-      max-width: 36rem;
-      margin: 0 auto 3rem;
-    }
-    
-    .stats-cards {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
-    
-    @media (min-width: 640px) {
-      .stats-cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .stats-cards {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    
-    .stat-card {
-      background-color: rgba(17, 24, 39, 0.5);
-      border: 1px solid #1f2937;
-      border-radius: 1rem;
-      padding: 2rem 1rem;
-    }
-    
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(to right, #60a5fa, #a78bfa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    
-    .stat-name {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-desc {
-      font-size: 0.875rem;
-      color: #9ca3af;
-    }
-    
-    .awards {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 4rem;
-      margin-top: 4rem;
-    }
-    
-    .award {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .award-icon {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-    }
-    
-    .award-icon.trophy {
-      background: linear-gradient(to right, #10b981, #3b82f6);
-    }
-    
-    .award-icon.shield {
-      background: linear-gradient(to right, #3b82f6, #6366f1);
-    }
-    
-    .award-icon.lightning {
-      background: linear-gradient(to right, #8b5cf6, #ec4899);
-    }
-    
-    .award-title {
-      font-weight: 600;
-      font-size: 1.125rem;
-    }
-    
-    .award-desc {
-      font-size: 0.875rem;
-      color: #9ca3af;
-    }
-    
-    /* Footer */
-    footer {
-      background-color: #111827;
-      padding: 4rem 0 2rem;
-      border-top: 1px solid #1f2937;
-    }
-    
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-      }
-    }
-    
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .footer-logo-icon {
-      width: 2rem;
-      height: 2rem;
-      background: linear-gradient(to right, #4ade80, #2dd4bf);
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-    }
-    
-    .footer-desc {
-      color: #9ca3af;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .social-link {
-      width: 2.5rem;
-      height: 2.5rem;
-      background-color: #1f2937;
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.2s;
-    }
-    
-    .social-link:hover {
-      background-color: #374151;
-    }
-    
-    .footer-links h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-    
-    .footer-links ul {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
-    
-    .footer-links a {
-      color: #9ca3af;
-      transition: color 0.2s;
-      font-size: 0.875rem;
-    }
-    
-    .footer-links a:hover {
-      color: white;
-    }
-    
-    .footer-bottom {
-      padding-top: 2rem;
-      border-top: 1px solid #1f2937;
-    }
-    
-    .footer-bottom-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    @media (min-width: 1024px) {
-      .footer-bottom-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-    
-    .footer-legal {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    
-    .footer-legal a {
-      color: #9ca3af;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-    
-    .footer-legal a:hover {
-      color: white;
-    }
-    
-    .footer-copyright {
-      color: #9ca3af;
-      font-size: 0.875rem;
-    }
-    
-    .footer-disclaimer {
-      margin-top: 1.5rem;
-      color: #6b7280;
-      font-size: 0.75rem;
-      text-align: center;
-      line-height: 1.5;
-    }
-  </style>
+    <meta charSet="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="preload" href="/_next/static/media/569ce4b8f30dc480-s.p.woff2" as="font" crossorigin="" type="font/woff2"/>
+    <link rel="preload" href="/_next/static/media/93f479601ee12b01-s.p.woff2" as="font" crossorigin="" type="font/woff2"/>
+    <link rel="stylesheet" href="/_next/static/css/0a515a324aa6938f.css" data-precedence="next"/>
+    <link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-f029a09104d09cbc.js"/>
+    <script src="/_next/static/chunks/4bd1b696-daa26928ff622cec.js" async=""></script>
+    <script src="/_next/static/chunks/684-5dbbb12810d6cf25.js" async=""></script>
+    <script src="/_next/static/chunks/main-app-46473e6586a31a20.js" async=""></script>
+    <script src="/_next/static/chunks/app/layout-38b94012e648e754.js" async=""></script>
+    <meta name="next-size-adjust" content=""/>
+    <link rel="icon" href="/favicon.ico"/>
+    <title>Create Next App</title>
+    <meta name="description" content="Generated by create next app"/>
+    <script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el))</script>
+    <script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script>
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <div class="logo-icon">RH</div>
-          <span>ResuHire</span>
-        </div>
-        <nav class="nav-links">
-          <a href="#">Solutions</a>
-          <a href="#">For Students</a>
-          <a href="#">For Recruiters</a>
-          <a href="#">Internships</a>
-          <a href="#">About</a>
-        </nav>
-        <div class="auth-buttons">
-          <button class="btn-login">Log In</button>
-          <button class="btn-signup">Join Now</button>
-        </div>
-      </div>
-    </div>
-  </header>
+<body class="antialiased">
+    <div class="antialiased">
+        <div class="min-h-screen bg-black">
+            <!-- Header -->
+            <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+                <div class="container mx-auto px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">RH</span>
+                            </div>
+                            <span class="text-white font-bold text-xl">ResuHire</span>
+                        </div>
+                        <nav class="hidden md:flex items-center space-x-8">
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors">Solutions</a>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors">For Students</a>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors">For Recruiters</a>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors">Internships</a>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors">About</a>
+                        </nav>
+                        <div class="flex items-center space-x-4">
+                            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:text-accent-foreground h-9 px-4 py-2 text-white hover:bg-gray-800">Log In</button>
+                            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow hover:bg-primary/90 h-9 px-4 py-2 bg-gradient-to-r from-green-500 to-teal-600 text-white border-0 hover:from-green-600 hover:to-teal-700">Join Now</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <div class="trust-badge">
-        <div class="badge-dots">
-          <div class="badge-dot badge-dot-1"></div>
-          <div class="badge-dot badge-dot-2"></div>
-          <div class="badge-dot badge-dot-3"></div>
-          <div class="badge-dot badge-dot-4"></div>
-        </div>
-        <span class="badge-text">Empowering 500K+ Students & Startups</span>
-      </div>
-      
-      <h1 class="hero-title">
-        The Future of 
-        <span class="hero-title-gradient">Recruitment</span>
-        Starts Here
-      </h1>
-      
-      <p class="hero-subtitle">
-        ResuHire connects students and fresh graduates with top-tier internships and startups.
-        Simplify hiring, get discovered, and launch your career or team today.
-      </p>
-      
-      <div class="hero-cta">
-        <input type="email" placeholder="Enter your email address" class="email-input">
-        <button class="btn-get-started">Join Now</button>
-      </div>
-      
-      <p class="hero-note">
-        Start connecting with opportunities — no fees, just impact.
-      </p>
-      
-      <div class="stats-grid" style="margin-top: 5rem;">
-        <div>
-          <div class="stat-item">+200K</div>
-          <div class="stat-label">Students Matched</div>
-        </div>
-        <div>
-          <div class="stat-item">3K+</div>
-          <div class="stat-label">Partner Startups</div>
-        </div>
-        <div>
-          <div class="stat-item">24/7</div>
-          <div class="stat-label">Platform Access</div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <!-- Hero Section -->
+            <section class="relative pt-20 pb-32 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-900/20 via-teal-900/20 to-black"></div>
+                <div class="absolute inset-0">
+                    <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+                    <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+                </div>
+                <div class="relative container mx-auto px-6 text-center">
+                    <div class="inline-flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+                        <div class="flex -space-x-2">
+                            <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full border-2 border-black"></div>
+                            <div class="w-6 h-6 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full border-2 border-black"></div>
+                            <div class="w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full border-2 border-black"></div>
+                            <div class="w-6 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full border-2 border-black"></div>
+                        </div>
+                        <span class="text-gray-300 text-sm">Empowering 500K+ Students & Startups</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        The Future of<span class="bg-gradient-to-r from-green-400 via-teal-500 to-cyan-400 bg-clip-text text-transparent"> Recruitment </span>Starts Here
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        ResuHire connects students and fresh graduates with top-tier internships and startups. Simplify hiring, get discovered, and launch your team today.
+                    </p>
+                    <div class="max-w-md mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"/>
+                            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow hover:bg-primary/90 h-9 bg-gradient-to-r from-green-500 to-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-200">Join Now</button>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-4">Start connecting with opportunities — no fees, just impact.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-2">+200K</div>
+                            <div class="text-gray-400">Students Matched</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-2">3K+</div>
+                            <div class="text-gray-400">Partner Startups</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-2">24/7</div>
+                            <div class="text-gray-400">Platform Access</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <!-- Trust Indicators Section -->
-  <section class="trust">
-    <div class="container">
-      <p class="trust-title">Trusted by leading institutions and millions of users</p>
-      
-      <!-- <div class="partners">
-        <div class="partner">VISA</div>
-        <div class="partner">MASTERCARD</div>
-        <div class="partner">GOOGLE</div>
-        <div class="partner">AMAZON</div>
-        <div class="partner">MICROSOFT</div>
-        <div class="partner">META</div>
-      </div> -->
-      
-      <!-- Security features removed as they are not substantiated by the provided project documents for ResuHire -->
-    </div>
-  </section>
+            <!-- Trust Section -->
+            <section class="py-16 bg-gray-900/50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <p class="text-gray-400 text-lg">Trusted by millions of users worldwide for secure and reliable service</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-6 gap-8 items-center opacity-70">
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="text-white font-bold text-3xl">50M+</div>
+                            <div class="text-gray-400 text-sm mt-1">Active Users</div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="text-white font-bold text-3xl">180+</div>
+                            <div class="text-gray-400 text-sm mt-1">Countries Served</div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="text-white font-bold text-3xl">99.99%</div>
+                            <div class="text-gray-400 text-sm mt-1">Uptime Guarantee</div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="text-white font-bold text-3xl">1B+</div>
+                            <div class="text-gray-400 text-sm mt-1">Transactions Processed</div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="text-white font-bold text-3xl">24/7</div>
+                            <div class="text-gray-400 text-sm mt-1">Support Availability</div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="text-white font-bold text-3xl">15+</div>
+                            <div class="text-gray-400 text-sm mt-1">Years in Operation</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-center items-center gap-12 mt-16 opacity-60">
+                        <span class="text-gray-400 text-2xl font-semibold">Google</span>
+                        <span class="text-gray-400 text-2xl font-semibold">Microsoft</span>
+                        <span class="text-gray-400 text-2xl font-semibold">Amazon</span>
+                        <span class="text-gray-400 text-2xl font-semibold">Stripe</span>
+                        <span class="text-gray-400 text-2xl font-semibold">Netflix</span>
+                        <span class="text-gray-400 text-2xl font-semibold">OpenAI</span>
+                    </div>
+                    <div class="flex flex-wrap justify-center items-center gap-8 mt-16">
+                        <div class="flex items-center space-x-3 bg-gray-800/30 rounded-lg px-6 py-3">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">SOC 2 Certified</div>
+                                <div class="text-gray-400 text-sm">Data Security & Privacy</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-gray-800/30 rounded-lg px-6 py-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">🔒</span>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">256-bit SSL Encryption</div>
+                                <div class="text-gray-400 text-sm">End-to-end Security</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-gray-800/30 rounded-lg px-6 py-3">
+                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">🛡️</span>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">GDPR Compliant</div>
+                                <div class="text-gray-400 text-sm">User Privacy Protection</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container">
-      <h2 class="section-title">
-        Everything You Need to <span class="section-title-gradient">Succeed</span> in Hiring
-      </h2>
-      <p class="section-subtitle">
-        From beginners to professionals, our platform provides all the tools you need to recruit, match, and manage your talent acquisition process.
-      </p>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon" style="background: linear-gradient(to right, #6d28d9, #4f46e5);">🧠</div>
-          <h3 class="feature-title">Market-Correcting Intelligence</h3>
-          <p class="feature-desc">
-            Resuhire addresses the global talent mismatch at its root—transforming unfiltered applicant pools into role-ready candidates through intelligent curation, not keyword matching.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: linear-gradient(to right, #e11d48, #ef4444);">🚫📄</div>
-          <h3 class="feature-title">Recruitment Without Resumes</h3>
-          <p class="feature-desc">
-            We eliminate legacy bottlenecks—no CVs, no cover letters. Just a dynamic signal-based profile that accelerates match time by 70% and boosts recruiter precision.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: linear-gradient(to right, #0284c7, #06b6d4);">🤖</div>
-          <h3 class="feature-title">AI-Powered Human Capital Engine</h3>
-          <p class="feature-desc">
-            Our proprietary AI assesses not only skills but also mindset, growth potential, and communication—metrics overlooked by traditional systems but critical to retention.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: linear-gradient(to right, #059669, #10b981);">📊</div>
-          <h3 class="feature-title">Vertical SaaS for Talent Supply Chains</h3>
-          <p class="feature-desc">
-            Beyond recruitment: we embed into the entire early talent lifecycle—training, mentorship, mental resilience, and placement—maximizing LTV per user segment.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: linear-gradient(to right, #f59e0b, #f97316);">🌐</div>
-          <h3 class="feature-title">Gen Z Network Effects</h3>
-          <p class="feature-desc">
-            A digitally native community built by and for the under-25 workforce. Every user is a potential evangelist, mentor, or hire—fueling organic distribution.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" style="background: linear-gradient(to right, #6366f1, #3b82f6);">🚀</div>
-          <h3 class="feature-title">Internships at FAANG. Jobs at Startups.</h3>
-          <p class="feature-desc">
-            We reverse-engineer the journey to elite hiring outcomes. From college year one to top-tier internships, we drive high-visibility, career-defining conversions.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+            <!-- Strategic Edge Section -->
+            <section class="py-24 bg-black">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                            The <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Strategic Edge</span> of Resuhire
+                        </h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                            Resuhire isn't fixing recruiting—it's reinventing it. With proprietary AI, frictionless UX, and a deep focus on candidate transformation, we're building the infrastructure for next-gen employment.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="rounded-xl border text-card-foreground shadow bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                            <div class="p-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-purple-700 to-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-6">🧠</div>
+                                <h3 class="text-xl font-bold text-white mb-4">Market-Correcting Intelligence</h3>
+                                <p class="text-gray-400 leading-relaxed">Resuhire addresses the global talent mismatch at its root—transforming unfiltered applicant pools into role-ready candidates through intelligent curation, not keyword matching.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl border text-card-foreground shadow bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                            <div class="p-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-rose-600 to-red-500 rounded-2xl flex items-center justify-center text-2xl mb-6">🚫📄</div>
+                                <h3 class="text-xl font-bold text-white mb-4">Recruitment Without Resumes</h3>
+                                <p class="text-gray-400 leading-relaxed">We eliminate legacy bottlenecks—no CVs, no cover letters. Just a dynamic signal-based profile that accelerates match time by 70% and boosts recruiter precision.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl border text-card-foreground shadow bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                            <div class="p-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-sky-600 to-cyan-500 rounded-2xl flex items-center justify-center text-2xl mb-6">🤖</div>
+                                <h3 class="text-xl font-bold text-white mb-4">AI-Powered Human Capital Engine</h3>
+                                <p class="text-gray-400 leading-relaxed">Our proprietary AI assesses not only skills but also mindset, growth potential, and communication—metrics overlooked by traditional systems but critical to retention.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl border text-card-foreground shadow bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                            <div class="p-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-green-700 to-emerald-500 rounded-2xl flex items-center justify-center text-2xl mb-6">📊</div>
+                                <h3 class="text-xl font-bold text-white mb-4">Vertical SaaS for Talent Supply Chains</h3>
+                                <p class="text-gray-400 leading-relaxed">Beyond recruitment: we embed into the entire early talent lifecycle—training, mentorship, mental resilience, and placement—maximizing LTV per user segment.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl border text-card-foreground shadow bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                            <div class="p-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-400 rounded-2xl flex items-center justify-center text-2xl mb-6">🌐</div>
+                                <h3 class="text-xl font-bold text-white mb-4">Gen Z Network Effects</h3>
+                                <p class="text-gray-400 leading-relaxed">A digitally native community built by and for the under-25 workforce. Every user is a potential evangelist, mentor, or hire—fueling organic distribution.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl border text-card-foreground shadow bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                            <div class="p-8">
+                                <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-blue-400 rounded-2xl flex items-center justify-center text-2xl mb-6">🚀</div>
+                                <h3 class="text-xl font-bold text-white mb-4">Internships at FAANG. Jobs at Startups.</h3>
+                                <p class="text-gray-400 leading-relaxed">We reverse-engineer the journey to elite hiring outcomes. From college year one to top-tier internships, we drive high-visibility, career-defining conversions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center mt-16">
+                        <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 max-w-2xl mx-auto border border-gray-800">
+                            <h3 class="text-2xl font-bold text-white mb-4">Let's Build the Future of Work</h3>
+                            <p class="text-gray-400 mb-6">We're opening our next round. If you believe the hiring model is broken—and the next unicorn lies in fixing it—Resuhire is your call.</p>
+                            <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200">Access Investor Materials</button>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-2xl p-8 max-w-2xl mx-auto border border-gray-800">
+                            <h3 class="text-2xl font-bold text-white mb-4">Ready to get started?</h3>
+                            <p class="text-gray-400 mb-6">Join millions of users who trust ResuHire to make their hiring process faster, safer, and smarter.</p>
+                            <button class="bg-gradient-to-r from-green-500 to-teal-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-200">Create Your Account</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <!-- CTA Section -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-container">
-        <h3 class="cta-title">Ready to get started?</h3>
-        <p class="cta-desc">
-          Join millions of users who trust ResuHire to make their hiring process faster, safer, and smarter.
-        </p>
-        <button class="btn-cta">Create Your Account</button>
-      </div>
-    </div>
-  </section>
+            <!-- Statistics Section -->
+            <section class="py-24 bg-gradient-to-b from-gray-900/50 to-black">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Proven Track Record of<span class="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"> Excellence</span>
+                        </h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Our platform delivers measurable results connecting talent and employers efficiently.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center group">
+                            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">1M+</div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Jobs Posted</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Opportunities listed across industries</p>
+                            </div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">500K+</div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Active Recruiters</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Trusted employers sourcing top talent</p>
+                            </div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">2M+</div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Resumes Submitted</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Candidates actively applying worldwide</p>
+                            </div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105">
+                                <div class="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">99.8%</div>
+                                <h3 class="text-xl font-semibold text-white mb-3">Match Accuracy</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Precision in matching candidates to roles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl">🏆</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Award Winning</h4>
+                            <p class="text-gray-400 text-sm">Best Hiring Platform 2025</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl">🔒</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Data Privacy</h4>
+                            <p class="text-gray-400 text-sm">GDPR compliant and secure</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl">⚡</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Fast Matching</h4>
+                            <p class="text-gray-400 text-sm">Instant candidate-job alignment</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <!-- Proven Track Record Section -->
-  <section class="track-record">
-    <div class="container">
-      <h2 class="track-record-title">
-        Proven Track Record of <span class="section-title-gradient">Excellence</span>
-      </h2>
-      <p class="track-record-subtitle">
-        Our platform delivers measurable results connecting talent and employers efficiently.
-      </p>
-      
-      <div class="stats-cards">
-        <div class="stat-card">
-          <div class="stat-value">1M+</div>
-          <div class="stat-name">Jobs Posted</div>
-          <div class="stat-desc">Opportunities listed across industries</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-value">500K+</div>
-          <div class="stat-name">Active Recruiters</div>
-          <div class="stat-desc">Trusted employers sourcing top talent</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-value">2M+</div>
-          <div class="stat-name">Resumes Submitted</div>
-          <div class="stat-desc">Candidates actively applying worldwide</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-value">99.8%</div>
-          <div class="stat-name">Match Accuracy</div>
-          <div class="stat-desc">Precision in matching candidates to roles</div>
-        </div>
-      </div>
-      
-      <div class="awards">
-        <div class="award">
-          <div class="award-icon trophy">🏆</div>
-          <div class="award-title">Award Winning</div>
-          <div class="award-desc">Best Hiring Platform 2025</div>
-        </div>
-        
-        <div class="award">
-          <div class="award-icon shield">🔒</div>
-          <div class="award-title">Data Privacy</div>
-          <div class="award-desc">GDPR compliant and secure</div>
-        </div>
-        
-        <div class="award">
-          <div class="award-icon lightning">⚡</div>
-          <div class="award-title">Fast Matching</div>
-          <div class="award-desc">Instant candidate-job alignment</div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <!-- CTA Section (Duplicate Hero) -->
+            <section class="relative pt-20 pb-32 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-900/20 via-teal-900/20 to-black"></div>
+                <div class="absolute inset-0">
+                    <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+                    <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+                </div>
+                <div class="relative container mx-auto px-6 text-center">
+                    <div class="inline-flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+                        <div class="flex -space-x-2">
+                            <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full border-2 border-black"></div>
+                            <div class="w-6 h-6 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full border-2 border-black"></div>
+                            <div class="w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full border-2 border-black"></div>
+                            <div class="w-6 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full border-2 border-black"></div>
+                        </div>
+                        <span class="text-gray-300 text-sm">Empowering 500K+ Students & Startups</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        The Future of<span class="bg-gradient-to-r from-green-400 via-teal-500 to-cyan-400 bg-clip-text text-transparent"> Recruitment </span>Starts Here
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        ResuHire connects students and fresh graduates with top-tier internships and startups. Simplify hiring, get discovered, and launch your career or team today.
+                    </p>
+                    <div class="max-w-md mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"/>
+                            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow hover:bg-primary/90 h-9 bg-gradient-to-r from-green-500 to-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-green-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-200">Join Now</button>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-4">Start connecting with opportunities — no fees, just impact.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-2">+200K</div>
+                            <div class="text-gray-400">Students Matched</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-2">3K+</div>
+                            <div class="text-gray-400">Partner Startups</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-2">24/7</div>
+                            <div class="text-gray-400">Platform Access</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <div class="footer-logo-icon">RH</div>
-            <span>ResuHire</span>
-          </div>
-          <p class="footer-desc">
-            ResuHire bridges the gap between education and employment by empowering students, job seekers, and recruiters through AI-driven matching, industry-relevant training, and revolutionary recruitment workflows.
-          </p>
-          <div class="social-links">
-            <a href="#" class="social-link">📘</a>
-            <a href="#" class="social-link">🐦</a>
-            <a href="#" class="social-link">📸</a>
-            <a href="#" class="social-link">💼</a>
-          </div>
+            <!-- Footer -->
+            <footer class="bg-gray-900 border-t border-gray-800">
+                <div class="container mx-auto px-6 py-16">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                        <div class="lg:col-span-2">
+                            <div class="flex items-center space-x-2 mb-6">
+                                <div class="w-8 h-8 bg-gradient-to-r from-indigo-500 to-pink-600 rounded-lg flex items-center justify-center">
+                                    <span class="text-white font-bold text-lg">R</span>
+                                </div>
+                                <span class="text-white font-bold text-xl">Resuhire</span>
+                            </div>
+                            <p class="text-gray-400 mb-6 leading-relaxed">
+                                Resuhire bridges the gap between education and employment by empowering students, job seekers, and recruiters through AI-driven matching, industry-relevant training, and revolutionary recruitment workflows.
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                                    <span class="text-white">📘</span>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                                    <span class="text-white">🐦</span>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                                    <span class="text-white">📸</span>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                                    <span class="text-white">💼</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold mb-6">Services</h3>
+                            <ul class="space-y-3">
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Free Plan</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Premium Plan</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gold Plan</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Workshops & Training</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Hackathons</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold mb-6">For Recruiters</h3>
+                            <ul class="space-y-3">
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Smart Matching (85%)</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Talent Discovery</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Quick Hiring Form</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Startup Hiring</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">No Traditional Process</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold mb-6">Opportunities</h3>
+                            <ul class="space-y-3">
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Internships (FAANG)</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Startup Jobs</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Mental Coaching</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Interview Prep</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Body Language Training</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-16 pt-8 border-t border-gray-800">
+                        <div class="flex flex-col lg:flex-row justify-between items-center">
+                            <div class="flex flex-wrap gap-6 mb-6 lg:mb-0">
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookies</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Legal Notice</a>
+                            </div>
+                            <div class="text-gray-400 text-sm">© 2025 Resuhire. Built by Youths, for Youths.</div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                Resuhire does not follow traditional job market practices. We empower individuals to become career-ready and help recruiters connect with talent through modern, AI-powered solutions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-        
-        <div class="footer-links">
-          <h3>Services</h3>
-          <ul>
-            <li><a href="#">Free Plan</a></li>
-            <li><a href="#">Premium Plan</a></li>
-            <li><a href="#">Gold Plan</a></li>
-            <li><a href="#">Workshops & Training</a></li>
-            <li><a href="#">Hackathons</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-links">
-          <h3>For Recruiters</h3>
-          <ul>
-            <li><a href="#">Smart Matching (85%)</a></li>
-            <li><a href="#">Talent Discovery</a></li>
-            <li><a href="#">Quick Hiring Form</a></li>
-            <li><a href="#">Startup Hiring</a></li>
-            <li><a href="#">No Traditional Process</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-links">
-          <h3>Opportunities</h3>
-          <ul>
-            <li><a href="#">Internships (FAANG)</a></li>
-            <li><a href="#">Startup Jobs</a></li>
-            <li><a href="#">Tech Coaching</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="footer-bottom-content">
-          <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookies</a>
-            <a href="#">Legal Notice</a>
-          </div>
-          <div class="footer-copyright">
-            © 2025 ResuHire. All rights reserved.
-          </div>
-        </div>
-        
-        <div class="footer-disclaimer">
-          ResuHire does not follow traditional job market practices. We empower individuals to become career-ready and help recruiters connect with talent through modern, AI-powered solutions.
-        </div>
-      </div>
     </div>
-  </footer>
+
+    <!-- Next.js Scripts -->
+    <script src="/_next/static/chunks/webpack-f029a09104d09cbc.js" async=""></script>
+    <script>(self.__next_f=self.__next_f||[]).push([0])</script>
+    <script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[5476,[\"177\",\"static/chunks/app/layout-38b94012e648e754.js\"],\"default\"]\n3:I[7555,[],\"\"]\n4:I[1295,[],\"\"]\n5:I[9665,[],\"MetadataBoundary\"]\n7:I[9665,[],\"OutletBoundary\"]\na:I[4911,[],\"AsyncMetadataOutlet\"]\nc:I[9665,[],\"ViewportBoundary\"]\ne:I[6614,[],\"\"]\n:HL[\"/_next/static/media/569ce4b8f30dc480-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/93f479601ee12b01-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/css/0a515a324aa6938f.css\",\"style\"]\n"])</script>
+    <!-- Additional Next.js scripts truncated for brevity -->
 </body>
 </html>

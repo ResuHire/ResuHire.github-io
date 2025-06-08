@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/hp/Downloads/Untitled-a.html -->
-<html lang="en" class="scroll-smooth"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ResuHire - The Future of Recruitment</title>
     <meta name="description" content="ResuHire connects students and fresh graduates with top-tier internships and startups. AI-powered recruitment platform.">
     <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;.9em&#39; font-size=&#39;90&#39;&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;">
-
-    <!-- Tailwind CSS -->
-    <script src="./ResuHire - The Future of Recruitmentt_files/saved_resource"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -16,18 +15,23 @@
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
+                        'bounce-slow': 'bounce 3s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
             }
         }
     </script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -42,6 +46,16 @@
             background-color: #000000;
             color: #ffffff;
             overflow-x: hidden;
+        }
+
+        .container {
+            max-width: none !important;
+            width: 100% !important;
+        }
+        
+        section, header, footer {
+            width: 100% !important;
+            max-width: none !important;
         }
 
         .antialiased {
@@ -174,7 +188,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Mobile menu styles */
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.3s ease-in-out;
@@ -183,24 +196,169 @@
         .mobile-menu.open {
             transform: translateX(0);
         }
+
+        .demo-container {
+            background: rgba(31, 41, 55, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .question-card {
+            background: rgba(17, 24, 39, 0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .step-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .pricing-card {
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .problem-card {
+            background: rgba(254, 242, 242, 0.05);
+            border: 2px solid rgba(254, 202, 202, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .solution-card {
+            background: rgba(240, 249, 255, 0.05);
+            border: 2px solid rgba(186, 230, 253, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+        
+        .success-card {
+            background: rgba(17, 24, 39, 0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .purple-gradient-text {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9CA3AF;
+        }
+
+        .faang-gradient {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-container {
+            position: relative;
+            padding-top: 5rem;
+            padding-bottom: 6rem;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(139, 92, 246, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(139, 92, 246, 1);
+        }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-20{bottom:5rem}.left-0{left:0px}.left-1\/2{left:50%}.left-10{left:2.5rem}.right-0{right:0px}.right-10{right:2.5rem}.top-0{top:0px}.top-1\/2{top:50%}.top-20{top:5rem}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-16{margin-top:4rem}.mt-20{margin-top:5rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-16{height:4rem}.h-6{height:1.5rem}.h-72{height:18rem}.h-8{height:2rem}.h-80{height:20rem}.h-96{height:24rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-16{width:4rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-72{width:18rem}.w-8{width:2rem}.w-80{width:20rem}.w-96{width:24rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes float{0%, 100%{transform:translateY(0px)}50%{transform:translateY(-20px)}}.animate-float{animation:float 6s ease-in-out infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.-space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(-0.5rem * var(--tw-space-x-reverse));margin-left:calc(-0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-black\/95{background-color:rgb(0 0 0 / 0.95)}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/5{background-color:rgb(16 185 129 / 0.05)}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-gray-900\/50{background-color:rgb(17 24 39 / 0.5)}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-green-500\/10{background-color:rgb(34 197 94 / 0.1)}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-teal-500\/10{background-color:rgb(20 184 166 / 0.1)}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-400{--tw-gradient-from:#60a5fa var(--tw-gradient-from-position);--tw-gradient-to:rgb(96 165 250 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-500\/10{--tw-gradient-from:rgb(59 130 246 / 0.1) var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-cyan-400{--tw-gradient-from:#22d3ee var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 211 238 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-gray-900\/50{--tw-gradient-from:rgb(17 24 39 / 0.5) var(--tw-gradient-from-position);--tw-gradient-to:rgb(17 24 39 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-400{--tw-gradient-from:#4ade80 var(--tw-gradient-from-position);--tw-gradient-to:rgb(74 222 128 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-500{--tw-gradient-from:#22c55e var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 197 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-500\/10{--tw-gradient-from:rgb(34 197 94 / 0.1) var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 197 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-900\/20{--tw-gradient-from:rgb(20 83 45 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(20 83 45 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgb(99 102 241 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-teal-400{--tw-gradient-from:#2dd4bf var(--tw-gradient-from-position);--tw-gradient-to:rgb(45 212 191 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-teal-900\/20{--tw-gradient-to:rgb(19 78 74 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(19 78 74 / 0.2) var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-black{--tw-gradient-to:#000 var(--tw-gradient-to-position)}.to-blue-500{--tw-gradient-to:#3b82f6 var(--tw-gradient-to-position)}.to-cyan-500{--tw-gradient-to:#06b6d4 var(--tw-gradient-to-position)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-pink-600{--tw-gradient-to:#db2777 var(--tw-gradient-to-position)}.to-purple-500\/10{--tw-gradient-to:rgb(168 85 247 / 0.1) var(--tw-gradient-to-position)}.to-teal-500{--tw-gradient-to:#14b8a6 var(--tw-gradient-to-position)}.to-teal-500\/10{--tw-gradient-to:rgb(20 184 166 / 0.1) var(--tw-gradient-to-position)}.to-teal-600{--tw-gradient-to:#0d9488 var(--tw-gradient-to-position)}.p-4{padding:1rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-32{padding-bottom:8rem}.pt-20{padding-top:5rem}.pt-4{padding-top:1rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.placeholder-gray-400::placeholder{--tw-placeholder-opacity:1;color:rgb(156 163 175 / var(--tw-placeholder-opacity, 1))}.opacity-70{opacity:0.7}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-800:hover{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-green-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(34 197 94 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:flex-row{flex-direction:row}}@media (min-width: 768px){.md\:flex{display:flex}.md\:hidden{display:none}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}}@media (min-width: 1024px){.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:mb-0{margin-bottom:0px}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.lg\:flex-row{flex-direction:row}}</style><style>
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
+    <style>
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
             }
+        }
 
-            @keyframes float {
-                0%, 100% { transform: translateY(0px); }
-                50% { transform: translateY(-20px); }
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
 
-            .animate-float {
-                animation: float 6s ease-in-out infinite;
-            }
-        </style></head>
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
 <body class="antialiased">
     <div class="min-h-screen bg-black">
         <!-- Header -->
@@ -216,11 +374,12 @@
 
                     <!-- Desktop Navigation -->
                     <nav class="hidden md:flex items-center space-x-8">
-                        <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#solutions" class="text-gray-300 hover:text-white transition-colors">Solutions</a>
-                        <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#students" class="text-gray-300 hover:text-white transition-colors">For Students</a>
-                        <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#recruiters" class="text-gray-300 hover:text-white transition-colors">For Recruiters</a>
-                        <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#internships" class="text-gray-300 hover:text-white transition-colors">Internships</a>
-                        <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                        <a href="#solutions" class="text-gray-300 hover:text-white transition-colors">Solutions</a>
+                        <a href="#students" class="text-gray-300 hover:text-white transition-colors">For Students</a>
+                        <a href="#recruiters" class="text-gray-300 hover:text-white transition-colors">For Recruiters</a>
+                        <a href="#internships" class="text-gray-300 hover:text-white transition-colors">Internships</a>
+                        <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                        <a href="#demo" class="text-gray-300 hover:text-white transition-colors">Try Demo</a>
                     </nav>
 
                     <!-- Desktop Buttons -->
@@ -248,11 +407,12 @@
                     </button>
                 </div>
                 <nav class="flex flex-col space-y-4 px-6">
-                    <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#solutions" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">Solutions</a>
-                    <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#students" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">For Students</a>
-                    <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#recruiters" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">For Recruiters</a>
-                    <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#internships" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">Internships</a>
-                    <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#about" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">About</a>
+                    <a href="#solutions" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">Solutions</a>
+                    <a href="#students" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">For Students</a>
+                    <a href="#recruiters" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">For Recruiters</a>
+                    <a href="#internships" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">Internships</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">About</a>
+                    <a href="#demo" class="text-gray-300 hover:text-white transition-colors py-2" onclick="toggleMobileMenu()">Try Demo</a>
                     <div class="pt-4 border-t border-gray-700">
                         <button class="w-full text-white hover:bg-gray-800 px-4 py-2 rounded-md transition-colors mb-2">Log In</button>
                         <button class="w-full btn-primary text-white px-6 py-2 rounded-xl font-semibold">Join Now</button>
@@ -261,114 +421,232 @@
             </div>
         </header>
 
-        <!-- Hero Section -->
-        <section class="relative pt-20 pb-32 overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-green-900/20 via-teal-900/20 to-black"></div>
+        <!-- New Hero Section -->
+        <section class="relative py-16 md:py-24 overflow-hidden hero-container">
             <div class="absolute inset-0">
-                <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse blob" style="transform: translateY(-2020.8px);"></div>
-                <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse blob" style="animation-delay: 1s; transform: translateY(-2020.8px);"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl animate-pulse blob" style="animation-delay: 0.5s; transform: translateY(-2020.8px);"></div>
+                <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse blob"></div>
+                <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse blob" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl animate-pulse blob" style="animation-delay: 0.5s;"></div>
             </div>
-            <div class="relative container mx-auto px-6 text-center">
-                <div class="inline-flex items-center space-x-2 glass-effect rounded-full px-4 py-2 mb-8">
-                    <div class="flex -space-x-2">
-                        <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full border-2 border-black"></div>
-                        <div class="w-6 h-6 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full border-2 border-black"></div>
-                        <div class="w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full border-2 border-black"></div>
-                        <div class="w-6 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full border-2 border-black"></div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                    <!-- Left Column: Text Content -->
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <!-- Empowering Tag -->
+                        <div class="inline-flex items-center space-x-2 glass-effect rounded-full px-4 py-2 mb-8">
+                            <div class="flex -space-x-2">
+                                <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full border-2 border-black"></div>
+                                <div class="w-6 h-6 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full border-2 border-black"></div>
+                                <div class="w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full border-2 border-black"></div>
+                                <div class="w-6 h-6 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full border-2 border-black"></div>
+                            </div>
+                            <span class="text-gray-300 text-sm">Empowering 500K+ Students & Startups</span>
+                        </div>
+                        
+                        <!-- Main Headline -->
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                            Bridge the Gap<br>
+                            Between<br>
+                            <span class="text-gradient">Education & Jobs</span>
+                        </h1>
+                        
+                        <!-- Description -->
+                        <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+                            Resuhire merges HR Tech with AI to revolutionize recruitment. No more traditional applications. 
+                            Just three simple questions that match you with your perfect opportunity at 
+                            <span class="text-gradient font-bold">85% accuracy</span>.
+                        </p>
+                        
+                        <!-- Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                            <button class="btn-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold">
+                                Start Your Journey
+                            </button>
+                            <button class="glass-effect text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold flex items-center justify-center gap-3 hover:bg-gray-800 transition-colors">
+                                <i class="fas fa-play-circle text-purple-400 text-xl"></i>
+                                Watch Demo
+                            </button>
+                        </div>
+                        
+                        <!-- Stats Section -->
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">200K+</div>
+                                <div class="stat-label">Students Helped</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">3K+</div>
+                                <div class="stat-label">Partner Startups</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value faang-gradient">FAANG</div>
+                                <div class="stat-label">Internships</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">85%</div>
+                                <div class="stat-label">Match Accuracy</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">1k+</div>
+                                <div class="stat-label">Companies</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Platform Access</div>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-gray-300 text-sm">Empowering 500K+ Students &amp; Startups</span>
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" style="opacity: 1;">
-                    The Future of<span class="text-gradient"> Recruitment </span>Starts Here
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                    ResuHire connects students and fresh graduates with top-tier internships and startups. Simplify hiring, get discovered, and launch your team today.
-                </p>
-                <div class="max-w-md mx-auto">
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 glass-effect rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
-                        <button class="btn-primary text-white px-8 py-4 rounded-xl font-semibold">Join Now</button>
-                    </div>
-                    <p class="text-gray-400 text-sm mt-4">Start connecting with opportunities — no fees, just impact.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-white mb-2">+200K</div>
-                        <div class="text-gray-400">Students Matched</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-white mb-2">3K+</div>
-                        <div class="text-gray-400">Partner Startups</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-white mb-2">24/7</div>
-                        <div class="text-gray-400">Platform Access</div>
+                    
+                    <!-- Right Column: Video Placeholder -->
+                    <div class="lg:w-1/2 flex justify-center mt-10 lg:mt-0">
+                        <div class="relative w-full max-w-lg">
+                            <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl overflow-hidden">
+                                <div class="w-full h-full flex items-center justify-center relative">
+                                    <!-- Abstract background pattern -->
+                                    <div class="absolute inset-0 opacity-30">
+                                        <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-purple-500 rounded-full blur-2xl"></div>
+                                        <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-blue-500 rounded-full blur-2xl"></div>
+                                        <div class="absolute top-1/3 right-1/3 w-24 h-24 bg-indigo-500 rounded-full blur-2xl"></div>
+                                    </div>
+                                    
+                                    <!-- Content -->
+                                    <div class="relative z-10 text-center p-6 md:p-8">
+                                        <div class="text-5xl mb-4 md:mb-6 text-purple-400">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold text-white mb-3">ResuHire in Action</h3>
+                                        <p class="text-gray-300">See how our AI-powered matching revolutionizes recruitment</p>
+                                    </div>
+                                    
+                                    <!-- Play button -->
+                                    <div class="play-button" onclick="playVideo()">
+                                        <i class="fas fa-play text-white text-2xl ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating elements -->
+                            <div class="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-full blur-xl animate-float"></div>
+                            <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full blur-xl animate-float" style="animation-delay: 1s;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust Section -->
-        <section class="py-16 bg-gray-900/50">
+        <!-- 3-Question Demo Section -->
+        <section id="demo" class="py-20 bg-gray-900/50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <p class="text-gray-400 text-lg">Trusted by millions of users worldwide for secure and reliable service</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Experience the <span class="purple-gradient-text">3-Question Revolution</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        No resumes, no cover letters. Just three simple questions that match you with opportunities at <span class="text-gradient">85% accuracy</span>.
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-6 gap-8 items-center opacity-70">
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="text-white font-bold text-3xl">50M+</div>
-                        <div class="text-gray-400 text-sm mt-1">Active Users</div>
+                
+                <div class="max-w-2xl mx-auto demo-container">
+                    <div id="question1" class="question-card">
+                        <div class="flex items-center mb-4">
+                            <div class="step-indicator mr-4">1</div>
+                            <h3 class="text-xl font-semibold text-white">Who are you?</h3>
+                        </div>
+                        <textarea class="w-full p-4 glass-effect rounded-lg text-white resize-none" rows="3" placeholder="Tell us about yourself, your background, and what makes you unique..."></textarea>
                     </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="text-white font-bold text-3xl">180+</div>
-                        <div class="text-gray-400 text-sm mt-1">Countries Served</div>
+                    
+                    <div id="question2" class="question-card" style="opacity: 0.5;">
+                        <div class="flex items-center mb-4">
+                            <div class="step-indicator mr-4">2</div>
+                            <h3 class="text-xl font-semibold text-white">What do you know?</h3>
+                        </div>
+                        <textarea class="w-full p-4 glass-effect rounded-lg text-white resize-none" rows="3" placeholder="List your skills, technologies, and areas of expertise..." disabled></textarea>
                     </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="text-white font-bold text-3xl">99.99%</div>
-                        <div class="text-gray-400 text-sm mt-1">Uptime Guarantee</div>
+                    
+                    <div id="question3" class="question-card" style="opacity: 0.5;">
+                        <div class="flex items-center mb-4">
+                            <div class="step-indicator mr-4">3</div>
+                            <h3 class="text-xl font-semibold text-white">How do you do it?</h3>
+                        </div>
+                        <textarea class="w-full p-4 glass-effect rounded-lg text-white resize-none" rows="3" placeholder="Describe your approach, methodology, and working style..." disabled></textarea>
                     </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="text-white font-bold text-3xl">1B+</div>
-                        <div class="text-gray-400 text-sm mt-1">Transactions Processed</div>
+                    
+                    <div class="text-center mt-8">
+                        <button onclick="submitDemo()" class="btn-primary text-white px-8 py-3 rounded-xl font-semibold disabled:opacity-50" disabled>
+                            🤖 Analyze with AI
+                        </button>
+                        <p class="text-sm text-gray-500 mt-2">Our AI will match you with perfect opportunities</p>
                     </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="text-white font-bold text-3xl">24/7</div>
-                        <div class="text-gray-400 text-sm mt-1">Support Availability</div>
-                    </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="text-white font-bold text-3xl">15+</div>
-                        <div class="text-gray-400 text-sm mt-1">Years in Operation</div>
-                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem-Solution Section -->
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        The <span class="text-gradient">Problem</span> We Solve
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        Traditional recruitment is broken. We bridge the gap between education and employment.
+                    </p>
                 </div>
 
-                <div class="flex flex-wrap justify-center items-center gap-8 mt-16">
-                    <div class="flex items-center space-x-3 glass-effect rounded-lg px-6 py-3">
-                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm">✓</span>
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">SOC 2 Certified</div>
-                            <div class="text-gray-400 text-sm">Data Security &amp; Privacy</div>
-                        </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Traditional Problems -->
+                    <div class="problem-card">
+                        <h3 class="text-2xl font-bold text-red-400 mb-6">Traditional Problems</h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-3">•</span>
+                                <span>Education-job market disconnect</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-3">•</span>
+                                <span>Endless resume uploads and cover letters</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-3">•</span>
+                                <span>Time-consuming screening processes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-3">•</span>
+                                <span>Low matching accuracy</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-3">•</span>
+                                <span>Limited skill development opportunities</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="flex items-center space-x-3 glass-effect rounded-lg px-6 py-3">
-                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm">🔒</span>
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">256-bit SSL Encryption</div>
-                            <div class="text-gray-400 text-sm">End-to-end Security</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3 glass-effect rounded-lg px-6 py-3">
-                        <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm">🛡️</span>
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">GDPR Compliant</div>
-                            <div class="text-gray-400 text-sm">User Privacy Protection</div>
-                        </div>
+
+                    <!-- Resuhire Solution -->
+                    <div class="solution-card">
+                        <h3 class="text-2xl font-bold text-green-400 mb-6">Resuhire Solution</h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3">•</span>
+                                <span>AI-powered skill gap analysis</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3">•</span>
+                                <span>Three simple questions replace resumes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3">•</span>
+                                <span>Instant intelligent matching</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3">•</span>
+                                <span>85% precision matching accuracy</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3">•</span>
+                                <span>Comprehensive training programs</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -427,6 +705,197 @@
                         <h3 class="text-2xl font-bold text-white mb-4">Ready to get started?</h3>
                         <p class="text-gray-400 mb-6">Join millions of users who trust ResuHire to make their hiring process faster, safer, and smarter.</p>
                         <button class="btn-primary text-white px-8 py-3 rounded-xl font-semibold">Create Your Account</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Students Section -->
+        <section id="students" class="py-20 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        For <span class="text-gradient">Students & Job Seekers</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        We don't just find you jobs – we transform you into the candidate companies are desperately seeking.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Skill Development -->
+                    <div class="glass-effect rounded-xl p-8 card-hover">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-6">⚡</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Skill Development</h3>
+                        <p class="text-gray-400 mb-6">Training, workshops, and hackathons to build market-ready skills</p>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Technical workshops</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Soft skills training</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Industry-specific bootcamps</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Real-world projects</li>
+                        </ul>
+                    </div>
+
+                    <!-- Interview Mastery -->
+                    <div class="glass-effect rounded-xl p-8 card-hover">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-6">👥</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Interview Mastery</h3>
+                        <p class="text-gray-400 mb-6">Complete interview preparation including body language and mindset</p>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Mock interviews</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Body language coaching</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Mental preparation</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Confidence building</li>
+                        </ul>
+                    </div>
+
+                    <!-- Career Strategy -->
+                    <div class="glass-effect rounded-xl p-8 card-hover">
+                        <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-pink-600 rounded-2xl flex items-center justify-center text-2xl mb-6">🎯</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Career Strategy</h3>
+                        <p class="text-gray-400 mb-6">Personalized job search methods and career planning</p>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Job search optimization</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Career path planning</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Network building</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Personal branding</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Recruiters Section -->
+        <section id="recruiters" class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        For <span class="text-gradient">Recruiters</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        Find the exact talent you need with 85% matching accuracy. No more sifting through irrelevant applications.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Left Side - Features -->
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center text-white font-bold">✓</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">AI-Powered Matching</h3>
+                                <p class="text-gray-400">Our advanced AI analyzes candidate responses to match them with your exact requirements at 85% accuracy.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">✓</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Quality Over Quantity</h3>
+                                <p class="text-gray-400">Get pre-screened, trained candidates who are genuinely interested and qualified for your roles.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-pink-600 rounded-xl flex items-center justify-center text-white font-bold">✓</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Streamlined Process</h3>
+                                <p class="text-gray-400">No more resume screening. Candidates answer three key questions that tell you everything you need to know.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Stats -->
+                    <div class="bg-gradient-to-br from-gray-900/50 to-black rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-white mb-8 text-center">Join Top Companies</h3>
+                        
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold gradient-text-blue mb-2">500+</div>
+                                <div class="text-gray-400">Startups</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold gradient-text-blue mb-2">FAANG</div>
+                                <div class="text-gray-400">Partners</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold gradient-text-blue mb-2">85%</div>
+                                <div class="text-gray-400">Match Rate</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold gradient-text-blue mb-2">24h</div>
+                                <div class="text-gray-400">Response Time</div>
+                            </div>
+                        </div>
+
+                        <button class="w-full btn-primary text-white py-3 rounded-xl font-semibold">Start Hiring Better</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Choose Your <span class="text-gradient">Path to Success</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        Whether you're just starting out or ready to level up, we have a plan that fits your goals.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Free Plan -->
+                    <div class="pricing-card">
+                        <h3 class="text-2xl font-bold text-white mb-2">Free</h3>
+                        <div class="text-4xl font-bold text-white mb-1">$0<span class="text-lg text-gray-500">/month</span></div>
+                        <p class="text-gray-400 mb-6">Perfect for getting started</p>
+                        
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Basic job matching</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Resume builder</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Basic workshops</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Community access</li>
+                        </ul>
+                        
+                        <button class="w-full bg-gray-700 text-white py-3 rounded-xl font-semibold hover:bg-gray-600 transition-colors">Get Started Free</button>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="pricing-card relative border-purple-500">
+                        <div class="popular-badge">Most Popular</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Premium</h3>
+                        <div class="text-4xl font-bold text-white mb-1">$29<span class="text-lg text-gray-500">/month</span></div>
+                        <p class="text-gray-400 mb-6">For serious job seekers</p>
+                        
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Everything in Free</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>AI-powered matching</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Mock interviews</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Skill assessments</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Career coaching</li>
+                        </ul>
+                        
+                        <button class="w-full btn-primary text-white py-3 rounded-xl font-semibold">Upgrade to Premium</button>
+                    </div>
+
+                    <!-- Gold Plan -->
+                    <div class="pricing-card border-yellow-400">
+                        <h3 class="text-2xl font-bold text-white mb-2">Gold</h3>
+                        <div class="text-4xl font-bold text-white mb-1">$99<span class="text-lg text-gray-500">/month</span></div>
+                        <p class="text-gray-400 mb-6">Elite career transformation</p>
+                        
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Everything in Premium</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>FAANG interview prep</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>1-on-1 mentorship</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Exclusive opportunities</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Priority support</li>
+                        </ul>
+                        
+                        <button class="w-full text-white py-3 rounded-xl font-semibold" style="background: linear-gradient(135deg, #f59e0b, #f97316);">Go Gold</button>
                     </div>
                 </div>
             </div>
@@ -497,8 +966,141 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section id="students" class="relative pt-20 pb-32 overflow-hidden">
+        <!-- Opportunities Section -->
+        <section id="internships" class="py-20 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Access <span class="text-gradient">Opportunities That Matter</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        From FAANG internships to exciting startup roles – we open doors that traditional platforms can't.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- FAANG Internships Card -->
+                    <div class="glass-effect rounded-2xl p-8 card-hover" style="opacity: 1; transition: opacity 0.6s, transform 0.6s; transform: translateY(0px);">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto">
+                            🏆
+                        </div>
+                        <h3 class="text-2xl font-bold text-white text-center mb-2">FAANG Internships</h3>
+                        <p class="text-purple-400 text-center mb-6">Exclusive Access</p>
+                        <p class="text-gray-400 mb-6 text-center">
+                            Secure internships at the world's most prestigious tech companies through our exclusive partnerships.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Direct partnerships with FAANG recruiters</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Personalized mentorship programs from industry experts</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Real-world project experience</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>85% higher interview success rate</span>
+                            </li>
+                        </ul>
+                        <button class="w-full btn-primary text-white py-3 rounded-xl font-semibold" style="background: linear-gradient(135deg, #8b5cf6, #a855f7);">
+                            Apply for FAANG
+                        </button>
+                    </div>
+
+                    <!-- Startup Jobs Card -->
+                    <div class="glass-effect rounded-2xl p-8 card-hover" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto">
+                            🚀
+                        </div>
+                        <h3 class="text-2xl font-bold text-white text-center mb-2">Startup Jobs</h3>
+                        <p class="text-cyan-400 text-center mb-6">Youth-Focused</p>
+                        <p class="text-gray-400 mb-6 text-center">
+                            Join innovative startups that value fresh perspectives and aren't stuck in traditional 9-5 mindsets.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-gray-300">
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Fast-paced learning environments</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Direct impact on company trajectory</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Equity and rapid advancement</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-400 mr-2">⭐</span>
+                                <span>Founder-level mentorship</span>
+                            </li>
+                        </ul>
+                        <button class="w-full btn-primary text-white py-3 rounded-xl font-semibold" style="background: linear-gradient(135deg, #8b5cf6, #a855f7);">
+                            Explore Startups
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        From <span class="text-gradient">Students to Heroes</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        Real stories from our community who landed FAANG internships and dream jobs
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="success-card card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl mr-4">👩‍💻</div>
+                            <div>
+                                <h4 class="font-bold text-white">Sarah Chen</h4>
+                                <p class="text-purple-400 text-sm">Software Engineer Intern at Google</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">"Resuhire's 3-question approach got me noticed by Google recruiters. No traditional application stress!"</p>
+                        <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                    </div>
+
+                    <div class="success-card card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl mr-4">👨‍💻</div>
+                            <div>
+                                <h4 class="font-bold text-white">Marcus Johnson</h4>
+                                <p class="text-purple-400 text-sm">Data Science Intern at Meta</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">"The AI training and interview prep were game-changers. Landed my dream internship in sophomore year!"</p>
+                        <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                    </div>
+
+                    <div class="success-card card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xl mr-4">👩‍🎓</div>
+                            <div>
+                                <h4 class="font-bold text-white">Priya Patel</h4>
+                                <p class="text-purple-400 text-sm">Product Manager Intern at Apple</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">"From fresh grad to Apple PM intern. Resuhire made the impossible possible!"</p>
+                        <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero Section -->
+        <section class="relative pt-20 pb-32 overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-green-900/20 via-teal-900/20 to-black"></div>
             <div class="absolute inset-0">
                 <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse blob" style="transform: translateY(-2020.8px);"></div>
@@ -515,11 +1117,11 @@
                     </div>
                     <span class="text-gray-300 text-sm">Empowering 500K+ Students &amp; Startups</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" style="opacity: 1;">
                     The Future of<span class="text-gradient"> Recruitment </span>Starts Here
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                    ResuHire connects students and fresh graduates with top-tier internships and startups. Simplify hiring, get discovered, and launch your career or team today.
+                    ResuHire connects students and fresh graduates with top-tier internships and startups. Simplify hiring, get discovered, and launch your team today.
                 </p>
                 <div class="max-w-md mx-auto">
                     <div class="flex flex-col sm:flex-row gap-4">
@@ -530,21 +1132,31 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto">
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-white mb-2">+200K</div>
-                        <div class="text-gray-400">Students Matched</div>
+                        <div class="text-3xl font-bold text-white mb-2">200K+</div>
+                        <div class="text-gray-400">Students Helped</div>
                     </div>
                     <div class="text-center">
                         <div class="text-3xl font-bold text-white mb-2">3K+</div>
                         <div class="text-gray-400">Partner Startups</div>
                     </div>
                     <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2">FAANG</div>
+                        <div class="text-gray-400">Internships</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2">85%</div>
+                        <div class="text-gray-400">Match Accuracy</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2">1k+</div>
+                        <div class="text-gray-400">Companies</div>
+                    </div>
+                     <div class="text-center">
                         <div class="text-3xl font-bold text-white mb-2">24/7</div>
                         <div class="text-gray-400">Platform Access</div>
                     </div>
-                </div>
             </div>
         </section>
-
         <!-- Footer -->
         <footer id="about" class="bg-gray-900 border-t border-gray-800">
             <div class="container mx-auto px-6 py-16">
@@ -560,16 +1172,16 @@
                             Resuhire bridges the gap between education and employment by empowering students, job seekers, and recruiters through AI-driven matching, industry-relevant training, and revolutionary recruitment workflows.
                         </p>
                         <div class="flex space-x-4">
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
+                            <a href="#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
                                 <span class="text-white">📘</span>
                             </a>
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
+                            <a href="#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
                                 <span class="text-white">🐦</span>
                             </a>
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
+                            <a href="#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
                                 <span class="text-white">📸</span>
                             </a>
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
+                            <a href="#" class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover-lift social-icon">
                                 <span class="text-white">💼</span>
                             </a>
                         </div>
@@ -577,41 +1189,41 @@
                     <div>
                         <h3 class="text-white font-semibold mb-6">Services</h3>
                         <ul class="space-y-3">
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Free Plan</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Premium Plan</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Gold Plan</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Workshops &amp; Training</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Hackathons</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Free Plan</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Premium Plan</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gold Plan</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Workshops &amp; Training</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Hackathons</a></li>
                         </ul>
                     </div>
                     <div id="recruiters">
                         <h3 class="text-white font-semibold mb-6">For Recruiters</h3>
                         <ul class="space-y-3">
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Smart Matching (85%)</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Talent Discovery</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Quick Hiring Form</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Startup Hiring</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">No Traditional Process</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Smart Matching (85%)</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Talent Discovery</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Quick Hiring Form</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Startup Hiring</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">No Traditional Process</a></li>
                         </ul>
                     </div>
                     <div id="internships">
                         <h3 class="text-white font-semibold mb-6">Opportunities</h3>
                         <ul class="space-y-3">
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Internships (FAANG)</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Startup Jobs</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Mental Coaching</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Interview Prep</a></li>
-                            <li><a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors">Body Language Training</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Internships (FAANG)</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Startup Jobs</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Mental Coaching</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Interview Prep</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Body Language Training</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="mt-16 pt-8 border-t border-gray-800">
                     <div class="flex flex-col lg:flex-row justify-between items-center">
                         <div class="flex flex-wrap gap-6 mb-6 lg:mb-0">
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookies</a>
-                            <a href="file:///C:/Users/hp/Downloads/Untitled-a.html#" class="text-gray-400 hover:text-white transition-colors text-sm">Legal Notice</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookies</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Legal Notice</a>
                         </div>
                         <div class="text-gray-400 text-sm">© 2025 Resuhire. Built by Youths, for Youths.</div>
                     </div>
@@ -680,32 +1292,6 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
-        });
-
-        // Add typing effect to hero text
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
-
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('h1');
-            if (heroTitle) {
-                const originalText = heroTitle.innerHTML;
-                heroTitle.style.opacity = '1';
-                // Uncomment the line below to enable typing effect
-                // typeWriter(heroTitle, originalText, 30);
-            }
         });
 
         // Add click interactivity to cards
@@ -797,8 +1383,62 @@
             });
         });
 
+        // Demo functionality
+        function startDemo() {
+            document.getElementById('demo').style.display = 'block';
+            document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+            
+            // Enable progressive form filling
+            const textareas = document.querySelectorAll('#demo textarea');
+            const questions = document.querySelectorAll('.question-card');
+            const submitBtn = document.querySelector('#demo button');
+            
+            textareas.forEach((textarea, index) => {
+                textarea.addEventListener('input', function() {
+                    if (this.value.trim().length > 10) {
+                        // Enable next question
+                        if (index < questions.length - 1) {
+                            questions[index + 1].style.opacity = '1';
+                            textareas[index + 1].disabled = false;
+                        }
+                        
+                        // Check if all questions are filled
+                        let allFilled = true;
+                        textareas.forEach(ta => {
+                            if (ta.value.trim().length < 10) allFilled = false;
+                        });
+                        
+                        if (allFilled) {
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-50');
+                        }
+                    }
+                });
+            });
+        }
+
+        // Submit demo function
+        function submitDemo() {
+            const submitBtn = document.querySelector('#demo button');
+            submitBtn.innerHTML = '🤖 Analyzing...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = '✅ 85% Match Found!';
+                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                
+                setTimeout(() => {
+                    alert('🎉 Congratulations! We found 12 perfect matches for you including 3 FAANG internships! Sign up to see your matches.');
+                }, 1000);
+            }, 3000);
+        }
+
+        // Play video function
+        function playVideo() {
+            alert("🎥 Demo video would play here! This is a frontend prototype.");
+        }
+
         console.log('ResuHire website loaded successfully! 🚀');
     </script>
-
-
-</body></html>
+</body>
+</html>
